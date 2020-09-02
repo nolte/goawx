@@ -19,6 +19,22 @@ type ListInventoriesResponse struct {
 
 const inventoriesAPIEndpoint = "/api/v2/inventories/"
 
+// GetInventoryByID shows the details of a awx inventroy sources.
+func (i *InventoriesService) GetInventoryByID(id int, params map[string]string) (*Inventory, error) {
+	result := new(Inventory)
+	endpoint := fmt.Sprintf("%s%d/", inventoriesAPIEndpoint, id)
+	resp, err := i.client.Requester.GetJSON(endpoint, result, params)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := CheckResponse(resp); err != nil {
+		return nil, err
+	}
+
+	return result, nil
+}
+
 // ListInventories shows list of awx inventories.
 func (i *InventoriesService) ListInventories(params map[string]string) ([]*Inventory, *ListInventoriesResponse, error) {
 	result := new(ListInventoriesResponse)
