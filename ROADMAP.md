@@ -24,7 +24,7 @@
 - [ ] Support Tokens endpoints;
 - [ ] Support Inventory endpoints(**partial**);
 - [ ] Support InventoryScripts endpoints;
-- [ ] Support InventorySources endpoints;
+- [X] Support InventorySources endpoints;
 - [ ] Support InventoryUpdates endpoints;
 - [ ] Support Jobs endpoints(**partial**);
 - [ ] Support JobEvents endpoints(**partial**);
