@@ -19,6 +19,22 @@ type ListGroupsResponse struct {
 
 const groupsAPIEndpoint = "/api/v2/groups/"
 
+// GetGroupByID shows the details of a awx group.
+func (g *GroupService) GetGroupByID(id int, params map[string]string) (*Group, error) {
+	result := new(Group)
+	endpoint := fmt.Sprintf("%s%d/", groupsAPIEndpoint, id)
+	resp, err := g.client.Requester.GetJSON(endpoint, result, params)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := CheckResponse(resp); err != nil {
+		return nil, err
+	}
+
+	return result, nil
+}
+
 // ListGroups shows list of awx Groups.
 func (g *GroupService) ListGroups(params map[string]string) ([]*Group, *ListGroupsResponse, error) {
 	result := new(ListGroupsResponse)

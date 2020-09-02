@@ -20,18 +20,16 @@ type ListJobTemplatesResponse struct {
 
 const jobTemplateAPIEndpoint = "/api/v2/job_templates/"
 
-// GetJobTemplate shows the details of a job template.
-func (jt *JobTemplateService) GetJobTemplate(id int, params map[string]string) (*JobTemplate, error) {
+// GetJobTemplateByID shows the details of a job template.
+func (jt *JobTemplateService) GetJobTemplateByID(id int, params map[string]string) (*JobTemplate, error) {
 	result := new(JobTemplate)
 	endpoint := fmt.Sprintf("%s%d/", jobTemplateAPIEndpoint, id)
 	resp, err := jt.client.Requester.GetJSON(endpoint, result, params)
 	if err != nil {
-		fmt.Printf("Fail end %s", endpoint)
 		return nil, err
 	}
 
 	if err := CheckResponse(resp); err != nil {
-		fmt.Printf("Fail end %s", endpoint)
 		return nil, err
 	}
 
