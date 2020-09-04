@@ -681,6 +681,20 @@ type Host struct {
 	AnsibleFactsModified interface{}  `json:"ansible_facts_modified"`
 }
 
+type Organizations struct {
+	Created          time.Time `json:"created"`
+	CustomVirtualenv string    `json:"custom_virtualenv"`
+	Description      string    `json:"description"`
+	ID               int       `json:"id"`
+	MaxHosts         int       `json:"max_hosts"`
+	Modified         time.Time `json:"modified"`
+	Name             string    `json:"name"`
+	Related          *Related  `json:"related"`
+	SummaryFields    *Summary  `json:"summary_fields"`
+	Type             string    `json:"type"`
+	URL              string    `json:"url"`
+}
+
 type InventorySource struct {
 	Created               time.Time   `json:"created"`
 	Credential            interface{} `json:"credential"`
