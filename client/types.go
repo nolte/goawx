@@ -730,3 +730,32 @@ type InventorySource struct {
 	URL                   string      `json:"url"`
 	Verbosity             int         `json:"verbosity"`
 }
+
+type WorkflowJobTemplate struct {
+	ID                   int         `json:"id"`
+	Type                 string      `json:"type"`
+	URL                  string      `json:"url"`
+	Related              *Related    `json:"related"`
+	SummaryFields        *Summary    `json:"summary_fields"`
+	Created              time.Time   `json:"created"`
+	Modified             time.Time   `json:"modified"`
+	Name                 string      `json:"name"`
+	Description          string      `json:"description"`
+	LastJobRun           interface{} `json:"last_job_run"`
+	LastJobFailed        bool        `json:"last_job_failed"`
+	NextJobRun           interface{} `json:"next_job_run"`
+	Status               string      `json:"status"`
+	ExtraVars            string      `json:"extra_vars"`
+	Organization         int         `json:"organization"`
+	SurveyEnabled        bool        `json:"survey_enabled"`
+	AllowSimultaneous    bool        `json:"allow_simultaneous"`
+	AskVariablesOnLaunch bool        `json:"ask_variables_on_launch"`
+	Inventory            int         `json:"inventory"`
+	Limit                interface{} `json:"limit"`
+	ScmBranch            interface{} `json:"scm_branch"`
+	AskInventoryOnLaunch bool        `json:"ask_inventory_on_launch"`
+	AskScmBranchOnLaunch bool        `json:"ask_scm_branch_on_launch"`
+	AskLimitOnLaunch     bool        `json:"ask_limit_on_launch"`
+	WebhookService       string      `json:"webhook_service"`
+	WebhookCredential    interface{} `json:"webhook_credential"`
+}
