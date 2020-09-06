@@ -6,12 +6,12 @@ import (
 	"fmt"
 )
 
-// JobTemplateService implements awx job template apis.
+// WorkflowJobTemplateService implements awx workflow job template apis.
 type WorkflowJobTemplateService struct {
 	client *Client
 }
 
-// ListJobTemplatesResponse represents `ListJobTemplates` endpoint response.
+// ListWorkflowJobTemplatesResponse represents `ListWorkflowJobTemplate` endpoint response.
 type ListWorkflowJobTemplatesResponse struct {
 	Pagination
 	Results []*WorkflowJobTemplate `json:"results"`
@@ -19,7 +19,7 @@ type ListWorkflowJobTemplatesResponse struct {
 
 const workflowJobTemplateAPIEndpoint = "/api/v2/workflow_job_templates/"
 
-// GetJobTemplateByID shows the details of a job template.
+// GetWorkflowJobTemplateByID shows the details of a workflow job template.
 func (jt *WorkflowJobTemplateService) GetWorkflowJobTemplateByID(id int, params map[string]string) (*WorkflowJobTemplate, error) {
 	result := new(WorkflowJobTemplate)
 	endpoint := fmt.Sprintf("%s%d/", workflowJobTemplateAPIEndpoint, id)
@@ -35,7 +35,7 @@ func (jt *WorkflowJobTemplateService) GetWorkflowJobTemplateByID(id int, params 
 	return result, nil
 }
 
-// ListJobTemplates shows a list of job templates.
+// ListWorkflowJobTemplates shows a list of workflow job templates.
 func (jt *WorkflowJobTemplateService) ListWorkflowJobTemplates(params map[string]string) ([]*WorkflowJobTemplate, *ListWorkflowJobTemplatesResponse, error) {
 	result := new(ListWorkflowJobTemplatesResponse)
 	resp, err := jt.client.Requester.GetJSON(workflowJobTemplateAPIEndpoint, result, params)
@@ -50,7 +50,7 @@ func (jt *WorkflowJobTemplateService) ListWorkflowJobTemplates(params map[string
 	return result.Results, result, nil
 }
 
-// CreateJobTemplate creates a job template
+// CreateWorkflowJobTemplate creates a workflow job template
 func (jt *WorkflowJobTemplateService) CreateWorkflowJobTemplate(data map[string]interface{}, params map[string]string) (*WorkflowJobTemplate, error) {
 	result := new(WorkflowJobTemplate)
 	mandatoryFields = []string{"name"}
@@ -74,7 +74,7 @@ func (jt *WorkflowJobTemplateService) CreateWorkflowJobTemplate(data map[string]
 	return result, nil
 }
 
-// UpdateJobTemplate updates a job template
+// UpdateWorkflowJobTemplate updates a workflow job template.
 func (jt *WorkflowJobTemplateService) UpdateWorkflowJobTemplate(id int, data map[string]interface{}, params map[string]string) (*WorkflowJobTemplate, error) {
 	result := new(WorkflowJobTemplate)
 	endpoint := fmt.Sprintf("%s%d", workflowJobTemplateAPIEndpoint, id)
@@ -93,7 +93,7 @@ func (jt *WorkflowJobTemplateService) UpdateWorkflowJobTemplate(id int, data map
 	return result, nil
 }
 
-// DeleteJobTemplate deletes a job template
+// DeleteWorkflowJobTemplate deletes a workflow job template.
 func (jt *WorkflowJobTemplateService) DeleteWorkflowJobTemplate(id int) (*WorkflowJobTemplate, error) {
 	result := new(WorkflowJobTemplate)
 	endpoint := fmt.Sprintf("%s%d", workflowJobTemplateAPIEndpoint, id)

@@ -38,8 +38,7 @@ More examples can be found at [here](https://github.com/mrcrilly/goawx/tree/mast
 
 ## Roadmap
 
-goawx is still in development, and its roadmap could be found at [here](https://github.com/mrcrilly/goawx/blob/master
-/ROADMAP.md).
+goawx is still in development, and its roadmap could be found at [here](https://github.com/mrcrilly/goawx/blob/master/ROADMAP.md).
 
 ## Contribute
 

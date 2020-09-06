@@ -7,13 +7,13 @@ import (
 	"log"
 )
 
-// JobTemplateService implements awx job template apis.
+// WorkflowJobTemplateNodeStepService implements awx job template nodes apis.
 type WorkflowJobTemplateNodeStepService struct {
 	endpoint string
 	client   *Client
 }
 
-// ListJobTemplates shows a list of job templates.
+// ListWorkflowJobTemplateNodes shows a list of job templates nodes.
 func (jt *WorkflowJobTemplateNodeStepService) ListWorkflowJobTemplateNodes(id int, params map[string]string) ([]*WorkflowJobTemplateNode, *ListWorkflowJobTemplateNodesResponse, error) {
 
 	workflowJobTemplateNodesActionEndpoint := fmt.Sprintf(jt.endpoint, id)
@@ -33,6 +33,7 @@ func fetchWorkflowJobTemplateNode(client *Client, params map[string]string, work
 
 	return result.Results, result, nil
 }
+
 func createWorkflowJobTemplateNode(client *Client, data map[string]interface{}, params map[string]string, workflowJobTemplateNodesActionEndpoint string) (*WorkflowJobTemplateNode, error) {
 	result := new(WorkflowJobTemplateNode)
 	mandatoryFields = []string{"unified_job_template", "identifier"}
@@ -41,14 +42,10 @@ func createWorkflowJobTemplateNode(client *Client, data map[string]interface{}, 
 		err := fmt.Errorf("Mandatory input arguments are absent: %s", validate)
 		return nil, err
 	}
-	log.Printf("xxxxxxxxxxxxxxxxxxxxxxx     Call Endpoint %v", data)
 	payload, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
 	}
-	jsonStr := string(payload)
-	log.Printf("JSON %s", jsonStr)
-	log.Printf("Call %s", workflowJobTemplateNodesActionEndpoint)
 	resp, err := client.Requester.PostJSON(workflowJobTemplateNodesActionEndpoint, bytes.NewReader(payload), result, params)
 	if err != nil {
 		return nil, err
@@ -61,9 +58,8 @@ func createWorkflowJobTemplateNode(client *Client, data map[string]interface{}, 
 
 }
 
-// CreateJobTemplate creates a job template
+// CreateWorkflowJobTemplateNodeStep will be create a template node for a existing node
 func (jt *WorkflowJobTemplateNodeStepService) CreateWorkflowJobTemplateNodeStep(id int, data map[string]interface{}, params map[string]string) (*WorkflowJobTemplateNode, error) {
 	workflowJobTemplateNodesActionEndpoint := fmt.Sprintf(jt.endpoint, id)
-	log.Printf("xxxxxxxxxxxxxxxxxxxxxxx     Call Endpoint %s", workflowJobTemplateNodesActionEndpoint)
 	return createWorkflowJobTemplateNode(jt.client, data, params, workflowJobTemplateNodesActionEndpoint)
 }
