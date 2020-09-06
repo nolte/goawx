@@ -47,3 +47,10 @@ There are many ways to contribute to awx-go.
 * Submit bugs via [Github issues](https://github.com/mrcrilly/goawx/issues);
 * Submit a [pull request](https://github.com/mrcrilly/goawx/pulls) for fixes or features;
 
+### Local Run
+
+Using [nektos/act](https://github.com/nektos/act) for start the GitHub Workflow locally.
+
+```sh
+act -j build -P ubuntu-latest=nektos/act-environments-ubuntu:18.0
+```
