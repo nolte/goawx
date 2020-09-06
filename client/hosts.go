@@ -25,6 +25,22 @@ type ListHostsResponse struct {
 
 const hostsAPIEndpoint = "/api/v2/hosts/"
 
+// GetHostByID shows the details of a awx inventroy sources.
+func (h *HostService) GetHostByID(id int, params map[string]string) (*Host, error) {
+	result := new(Host)
+	endpoint := fmt.Sprintf("%s%d/", hostsAPIEndpoint, id)
+	resp, err := h.client.Requester.GetJSON(endpoint, result, params)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := CheckResponse(resp); err != nil {
+		return nil, err
+	}
+
+	return result, nil
+}
+
 // ListHosts shows list of awx Hosts.
 func (h *HostService) ListHosts(params map[string]string) ([]*Host, *ListHostsResponse, error) {
 	result := new(ListHostsResponse)

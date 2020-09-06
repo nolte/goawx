@@ -17,14 +17,14 @@
 - [ ] Support Settings endpoints;
 - [ ] Support Me endpoints;
 - [ ] Support Dashboard endpoints;
-- [ ] Support Orgnizations endpoints;
+- [X] Support Orgnizations endpoints;
 - [ ] Support Teams endpoints;
 - [ ] Support CredentialTypes endpoints;
 - [ ] Support Applications endpoints;
 - [ ] Support Tokens endpoints;
 - [ ] Support Inventory endpoints(**partial**);
 - [ ] Support InventoryScripts endpoints;
-- [ ] Support InventorySources endpoints;
+- [X] Support InventorySources endpoints;
 - [ ] Support InventoryUpdates endpoints;
 - [ ] Support Jobs endpoints(**partial**);
 - [ ] Support JobEvents endpoints(**partial**);
@@ -39,7 +39,7 @@
 - [ ] Support UnifiedJobTemplates endpoints;
 - [ ] Support UnifiedJobs endpoints;
 - [ ] Support ActivityStream endpoints;
-- [ ] Support WorkflowJobTemplates endpoints;
+- [X] Support WorkflowJobTemplates endpoints;
 - [ ] Support WorkflowJobs endpoints;
-- [ ] Support WorkflowJobTemplateNodes endpoints;
+- [X] Support WorkflowJobTemplateNodes endpoints;
 - [ ] Support WorkflowJobNodes endpoints;

@@ -101,7 +101,7 @@ func (r *Requester) Do(ar *APIRequest, responseStruct interface{}, options ...in
 		json.NewDecoder(response.Body).Decode(&errorList)
 
 		errorString = "Errors:"
-		for k,v := range errorList {
+		for k, v := range errorList {
 			errorString = fmt.Sprintf("%s\n- %s: %+v", errorString, k, v)
 		}
 

@@ -38,8 +38,7 @@ More examples can be found at [here](https://github.com/mrcrilly/goawx/tree/mast
 
 ## Roadmap
 
-goawx is still in development, and its roadmap could be found at [here](https://github.com/mrcrilly/goawx/blob/master
-/ROADMAP.md).
+goawx is still in development, and its roadmap could be found at [here](https://github.com/mrcrilly/goawx/blob/master/ROADMAP.md).
 
 ## Contribute
 
@@ -47,4 +46,3 @@ There are many ways to contribute to awx-go.
 
 * Submit bugs via [Github issues](https://github.com/mrcrilly/goawx/issues);
 * Submit a [pull request](https://github.com/mrcrilly/goawx/pulls) for fixes or features;
-

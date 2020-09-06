@@ -680,3 +680,108 @@ type Host struct {
 	InsightsSystemID     interface{}  `json:"insights_system_id"`
 	AnsibleFactsModified interface{}  `json:"ansible_facts_modified"`
 }
+
+type Organizations struct {
+	Created          time.Time `json:"created"`
+	CustomVirtualenv string    `json:"custom_virtualenv"`
+	Description      string    `json:"description"`
+	ID               int       `json:"id"`
+	MaxHosts         int       `json:"max_hosts"`
+	Modified         time.Time `json:"modified"`
+	Name             string    `json:"name"`
+	Related          *Related  `json:"related"`
+	SummaryFields    *Summary  `json:"summary_fields"`
+	Type             string    `json:"type"`
+	URL              string    `json:"url"`
+}
+
+type InventorySource struct {
+	Created               time.Time   `json:"created"`
+	Credential            interface{} `json:"credential"`
+	CustomVirtualenv      interface{} `json:"custom_virtualenv"`
+	Description           string      `json:"description"`
+	GroupBy               string      `json:"group_by"`
+	ID                    int         `json:"id"`
+	InstanceFilters       string      `json:"instance_filters"`
+	Inventory             int         `json:"inventory"`
+	LastJobFailed         bool        `json:"last_job_failed"`
+	LastJobRun            interface{} `json:"last_job_run"`
+	LastUpdateFailed      bool        `json:"last_update_failed"`
+	LastUpdated           interface{} `json:"last_updated"`
+	Modified              time.Time   `json:"modified"`
+	Name                  string      `json:"name"`
+	NextJobRun            interface{} `json:"next_job_run"`
+	Overwrite             bool        `json:"overwrite"`
+	OverwriteVars         bool        `json:"overwrite_vars"`
+	Related               *Related    `json:"related"`
+	Source                string      `json:"source"`
+	SourcePath            string      `json:"source_path"`
+	SourceProject         int         `json:"source_project"`
+	SourceRegions         string      `json:"source_regions"`
+	SourceScript          interface{} `json:"source_script"`
+	SourceVars            string      `json:"source_vars"`
+	Status                string      `json:"status"`
+	SummaryFields         *Summary    `json:"summary_fields"`
+	Timeout               int         `json:"timeout"`
+	Type                  string      `json:"type"`
+	UpdateCacheTimeout    int         `json:"update_cache_timeout"`
+	UpdateOnLaunch        bool        `json:"update_on_launch"`
+	UpdateOnProjectUpdate bool        `json:"update_on_project_update"`
+	URL                   string      `json:"url"`
+	Verbosity             int         `json:"verbosity"`
+}
+
+type WorkflowJobTemplate struct {
+	ID                   int         `json:"id"`
+	Type                 string      `json:"type"`
+	URL                  string      `json:"url"`
+	Related              *Related    `json:"related"`
+	SummaryFields        *Summary    `json:"summary_fields"`
+	Created              time.Time   `json:"created"`
+	Modified             time.Time   `json:"modified"`
+	Name                 string      `json:"name"`
+	Description          string      `json:"description"`
+	LastJobRun           interface{} `json:"last_job_run"`
+	LastJobFailed        bool        `json:"last_job_failed"`
+	NextJobRun           interface{} `json:"next_job_run"`
+	Status               string      `json:"status"`
+	ExtraVars            string      `json:"extra_vars"`
+	Organization         int         `json:"organization"`
+	SurveyEnabled        bool        `json:"survey_enabled"`
+	AllowSimultaneous    bool        `json:"allow_simultaneous"`
+	AskVariablesOnLaunch bool        `json:"ask_variables_on_launch"`
+	Inventory            int         `json:"inventory"`
+	Limit                interface{} `json:"limit"`
+	ScmBranch            interface{} `json:"scm_branch"`
+	AskInventoryOnLaunch bool        `json:"ask_inventory_on_launch"`
+	AskScmBranchOnLaunch bool        `json:"ask_scm_branch_on_launch"`
+	AskLimitOnLaunch     bool        `json:"ask_limit_on_launch"`
+	WebhookService       string      `json:"webhook_service"`
+	WebhookCredential    interface{} `json:"webhook_credential"`
+}
+
+type WorkflowJobTemplateNode struct {
+	ID                     int       `json:"id"`
+	Type                   string    `json:"type"`
+	URL                    string    `json:"url"`
+	Related                *Related  `json:"related"`
+	SummaryFields          *Summary  `json:"summary_fields"`
+	Created                time.Time `json:"created"`
+	Modified               time.Time `json:"modified"`
+	ExtraData              string    `json:"extra_data"`
+	Inventory              int       `json:"inventory"`
+	ScmBranch              string    `json:"scm_branch"`
+	JobType                string    `json:"job_type"`
+	JobTags                string    `json:"job_tags"`
+	SkipTags               string    `json:"skip_tags"`
+	Limit                  string    `json:"limit"`
+	DiffMode               string    `json:"diff_mode"`
+	Verbosity              int       `json:"verbosity"`
+	WorkflowJobTemplate    int       `json:"workflow_job_template"`
+	UnifiedJobTemplate     int       `json:"unified_job_template"`
+	SuccessNodes           []int     `json:"success_nodes"`
+	FailureNodes           []int     `json:"failure_nodes"`
+	AlwaysNodes            []int     `json:"always_nodes"`
+	AllParentsMustConverge bool      `json:"all_parents_must_converge"`
+	Identifier             string    `json:"identifier"`
+}

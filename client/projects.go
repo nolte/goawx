@@ -34,6 +34,22 @@ func (p *ProjectService) ListProjects(params map[string]string) ([]*Project, *Li
 	return result.Results, result, nil
 }
 
+// GetProjectById shows the details of a project.
+func (p *ProjectService) GetProjectById(id int, params map[string]string) (*Project, error) {
+	result := new(Project)
+	endpoint := fmt.Sprintf("%s%d/", projectsAPIEndpoint, id)
+	resp, err := p.client.Requester.GetJSON(endpoint, result, params)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := CheckResponse(resp); err != nil {
+		return nil, err
+	}
+
+	return result, nil
+}
+
 // CreateProject creates an awx project.
 func (p *ProjectService) CreateProject(data map[string]interface{}, params map[string]string) (*Project, error) {
 	mandatoryFields = []string{"name", "organization", "scm_type"}
