@@ -6,12 +6,12 @@ import (
 	"fmt"
 )
 
-// OrganizationsService implements awx projects apis.
+// OrganizationsService implements awx organizations apis.
 type OrganizationsService struct {
 	client *Client
 }
 
-// ListOrganizationsResponse represents `ListProjects` endpoint response.
+// ListOrganizationsResponse represents `ListOrganizations` endpoint response.
 type ListOrganizationsResponse struct {
 	Pagination
 	Results []*Organizations `json:"results"`
@@ -19,7 +19,7 @@ type ListOrganizationsResponse struct {
 
 const organizationsAPIEndpoint = "/api/v2/organizations/"
 
-// ListOrganizations shows list of awx projects.
+// ListOrganizations shows list of awx organizations.
 func (p *OrganizationsService) ListOrganizations(params map[string]string) ([]*Organizations, *ListOrganizationsResponse, error) {
 	result := new(ListOrganizationsResponse)
 	resp, err := p.client.Requester.GetJSON(organizationsAPIEndpoint, result, params)
