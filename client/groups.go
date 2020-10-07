@@ -50,8 +50,9 @@ func (g *GroupService) ListGroups(params map[string]string) ([]*Group, *ListGrou
 	return result.Results, result, nil
 }
 
-// CreateGroup creates an awx Group.
-func (g *GroupService) CreateGroup(data map[string]interface{}, params map[string]string) (*Group, error) {
+func (g *GroupService) createGroup(endpoint string,
+	data map[string]interface{}, params map[string]string) (*Group, error) {
+
 	mandatoryFields = []string{"name", "inventory"}
 	validate, status := ValidateParams(data, mandatoryFields)
 
@@ -67,8 +68,7 @@ func (g *GroupService) CreateGroup(data map[string]interface{}, params map[strin
 	}
 
 	// Add check if Group exists and return proper error
-
-	resp, err := g.client.Requester.PostJSON(groupsAPIEndpoint, bytes.NewReader(payload), result, params)
+	resp, err := g.client.Requester.PostJSON(endpoint, bytes.NewReader(payload), result, params)
 	if err != nil {
 		return nil, err
 	}
@@ -78,6 +78,16 @@ func (g *GroupService) CreateGroup(data map[string]interface{}, params map[strin
 	}
 
 	return result, nil
+}
+
+func (g *GroupService) CreateSubGroup(parentId int, data map[string]interface{}, params map[string]string) (*Group, error) {
+	endpoint := fmt.Sprintf("%s%d/", groupsAPIEndpoint, parentId)
+	return g.createGroup(endpoint, data, params)
+}
+
+// CreateGroup creates an awx Group.
+func (g *GroupService) CreateGroup(data map[string]interface{}, params map[string]string) (*Group, error) {
+	return g.createGroup(groupsAPIEndpoint, data, params)
 }
 
 // UpdateGroup update an awx group
