@@ -17,7 +17,7 @@
 - [ ] Support Settings endpoints;
 - [ ] Support Me endpoints;
 - [ ] Support Dashboard endpoints;
-- [X] Support Orgnizations endpoints;
+- [X] Support Organizations endpoints;
 - [ ] Support Teams endpoints;
 - [ ] Support CredentialTypes endpoints;
 - [ ] Support Applications endpoints;
