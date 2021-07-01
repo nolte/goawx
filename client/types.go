@@ -702,6 +702,7 @@ type Teams struct {
 	Modified         time.Time `json:"modified"`
 	Name             string    `json:"name"`
 	Organization     int       `json:"organization"`
+	OrganizationID   int       `json:"organization_id"`
 	Related          *Related  `json:"related"`
 	SummaryFields    *Summary  `json:"summary_fields"`
 	Type             string    `json:"type"`
