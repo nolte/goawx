@@ -695,6 +695,19 @@ type Organizations struct {
 	URL              string    `json:"url"`
 }
 
+type Teams struct {
+	Created          time.Time `json:"created"`
+	Description      string    `json:"description"`
+	ID               int       `json:"id"`
+	Modified         time.Time `json:"modified"`
+	Name             string    `json:"name"`
+	Organization     int       `json:"organization"`
+	Related          *Related  `json:"related"`
+	SummaryFields    *Summary  `json:"summary_fields"`
+	Type             string    `json:"type"`
+	URL              string    `json:"url"`
+}
+
 type InventorySource struct {
 	Created               time.Time   `json:"created"`
 	Credential            interface{} `json:"credential"`

@@ -20,7 +20,7 @@ type ListTeamsResponse struct {
 const teamsAPIEndpoint = "/api/v2/teams/"
 
 // GetTeamByID shows the details of an awx team.
-func (i *TeamsService) GetTeamByID(id int, params map[string]string) (*Team, error) {
+func (i *TeamsService) GetTeamByID(id int, params map[string]string) (*Teams, error) {
 	result := new(Teams)
 	endpoint := fmt.Sprintf("%s%d/", teamsAPIEndpoint, id)
 	resp, err := i.client.Requester.GetJSON(endpoint, result, params)
@@ -36,7 +36,7 @@ func (i *TeamsService) GetTeamByID(id int, params map[string]string) (*Team, err
 }
 
 // ListTeams shows list of awx teams.
-func (i *TeamsService) ListTeams(params map[string]string) ([]*Team, *ListTeamsResponse, error) {
+func (i *TeamsService) ListTeams(params map[string]string) ([]*Teams, *ListTeamsResponse, error) {
 	result := new(ListTeamsResponse)
 	resp, err := i.client.Requester.GetJSON(teamsAPIEndpoint, result, params)
 	if err != nil {
@@ -51,7 +51,7 @@ func (i *TeamsService) ListTeams(params map[string]string) ([]*Team, *ListTeamsR
 }
 
 // CreateTeam creates an awx team.
-func (i *TeamsService) CreateTeam(data map[string]interface{}, params map[string]string) (*Team, error) {
+func (i *TeamsService) CreateTeam(data map[string]interface{}, params map[string]string) (*Teams, error) {
 	mandatoryFields = []string{"name", "organization"}
 	validate, status := ValidateParams(data, mandatoryFields)
 
@@ -81,7 +81,7 @@ func (i *TeamsService) CreateTeam(data map[string]interface{}, params map[string
 }
 
 // UpdateTeam update an awx team
-func (i *TeamsService) UpdateTeam(id int, data map[string]interface{}, params map[string]string) (*Team, error) {
+func (i *TeamsService) UpdateTeam(id int, data map[string]interface{}, params map[string]string) (*Teams, error) {
 	result := new(Teams)
 	endpoint := fmt.Sprintf("%s%d", teamsAPIEndpoint, id)
 	payload, err := json.Marshal(data)
@@ -101,7 +101,7 @@ func (i *TeamsService) UpdateTeam(id int, data map[string]interface{}, params ma
 }
 
 // GetTeam retrives the team information from its ID or Name
-func (i *TeamsService) GetTeam(id int, params map[string]string) (*Team, error) {
+func (i *TeamsService) GetTeam(id int, params map[string]string) (*Teams, error) {
 	endpoint := fmt.Sprintf("%s%d", teamsAPIEndpoint, id)
 	result := new(Teams)
 	resp, err := i.client.Requester.GetJSON(endpoint, result, map[string]string{})
@@ -117,7 +117,7 @@ func (i *TeamsService) GetTeam(id int, params map[string]string) (*Team, error) 
 }
 
 // DeleteTeam delete an team from AWX
-func (i *TeamsService) DeleteTeam(id int) (*Team, error) {
+func (i *TeamsService) DeleteTeam(id int) (*Teams, error) {
 	result := new(Teams)
 	endpoint := fmt.Sprintf("%s%d", teamsAPIEndpoint, id)
 
